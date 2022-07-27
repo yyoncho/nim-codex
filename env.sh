@@ -5,3 +5,10 @@
 REL_PATH="$(dirname ${BASH_SOURCE[0]:-${(%):-%x}})"
 ABS_PATH="$(cd ${REL_PATH}; pwd)"
 source ${ABS_PATH}/vendor/nimbus-build-system/scripts/env.sh
+
+export NIMBUS_BUILD_SYSTEM=yes
+echo "--noNimblePath" > nimbus-build-system.paths
+for file in $(ls -d $PWD/vendor/*)
+do
+  echo --path:"\"$file\""
+done >> nimbus-build-system.paths

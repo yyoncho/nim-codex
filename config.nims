@@ -91,6 +91,9 @@ switch("define", "libp2p_pki_schemes=secp256k1")
 switch("define", "chronicles_sinks=textlines[dynamic],json[dynamic]")
 
 # begin Nimble config (version 1)
+when (getEnv("NIMBUS_BUILD_SYSTEM") == "yes"):
+  include "nimbus-build-system.paths"
+
 when system.fileExists("nimble.paths"):
   include "nimble.paths"
 # end Nimble config
